@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+    web:
+        build: .
+        ports:
+            - 8080:80
+        networks:
+            - net
+        volumes:
+            - ./config.yml:/var/www/html/configs/config.yml
+    db:
+        image: mysql:5
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=mibew
+            - MYSQL_USER=mibew
+            - MYSQL_PASSWORD=mibew
+        networks:
+            - net
+
+networks:
+    net:

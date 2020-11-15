@@ -32,13 +32,15 @@ ENV MIBEW_SHA1 eaa9e931b8dfd09b72a1df0b3c5d52f1bbe5f7ca
 WORKDIR /~
 
 # Download archive
-RUN curl -o mibew.tar.gz -fSL "https://downloads.sourceforge.net/project/mibew/core/${MIBEW_VERSION}/mibew-${MIBEW_VERSION}.tar.gz"; \
+RUN curl -o mibew.tar.gz -fSL "https://downloads.sourceforge.net/project/mibew/core/${MIBEW_VERSION}/mibew-${MIBEW_VERSION}.tar.gz" && \
+    # check if file exists, just to be safe
+    test -f "mibew.tar.gz" && \
     # check sha1 sum
-	echo "$MIBEW_SHA1 *mibew.tar.gz" | sha1sum -c -; \
+	echo "$MIBEW_SHA1 *mibew.tar.gz" | sha1sum -c -&& \
     # Extract files to apache root folder
-	tar -xzf mibew.tar.gz --strip 1 -C /var/www/html/; \
+	tar -xzf mibew.tar.gz --strip 1 -C /var/www/html/ && \
     # remove downloaded archive
-	rm mibew.tar.gz; \
+	rm mibew.tar.gz && \
     # change permissions
 	chown -R www-data:www-data /var/www/html;
 
