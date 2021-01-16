@@ -25,8 +25,8 @@ RUN docker-php-ext-install \
 # TODO: install node and gulp to build from source
 
 # Enviroment variables
-ENV MIBEW_VERSION 3.2.7
-ENV MIBEW_SHA1 eaa9e931b8dfd09b72a1df0b3c5d52f1bbe5f7ca
+ENV MIBEW_VERSION 3.2.8
+ENV MIBEW_SHA1 b3c8cc4da34e6d470051699f572be539cb5ff38d
 
 # change workdir to home
 WORKDIR /~
