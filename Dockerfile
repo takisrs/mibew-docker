@@ -27,6 +27,7 @@ RUN docker-php-ext-install \
 # Enviroment variables
 ENV MIBEW_VERSION 3.5.4
 ENV MIBEW_SHA1 ebb925df2ebeb31cc8b945f9f57ff7c222863be9 
+ENV MIBEW_DE_SHA1 468d86103f4a398cdcda651b2a40687142af5e5d
 
 # change workdir to home
 WORKDIR /~
@@ -43,7 +44,14 @@ RUN curl -o mibew.tar.gz -fSL "https://downloads.sourceforge.net/project/mibew/c
     # remove downloaded archive
 	rm mibew.tar.gz && \
     # change permissions
-	chown -R www-data:www-data /var/www/html;
+	chown -R www-data:www-data /var/www/html && \
+    # download locales de
+    curl -o mibew-i18n-de.tar.gz -fSL "https://sourceforge.net/projects/mibew/files/i18n/de/${MIBEW_VERSION}/mibew-i18n-de-${MIBEW_VERSION}-20211214.tar.gz" && \
+    test -f "mibew-i18n-de.tar.gz" && \
+    # check sha1 sum
+        echo "$MIBEW_DE_SHA1 mibew-i18n-de.tar.gz" | sha1sum -c -&& \
+    # Extract files to apache root folder
+        tar -xzf mibew-i18n-de.tar.gz -C /var/www/html/mibew/locales/ ;
 
 # create a volume for the config file
 VOLUME /var/www/html/mibew/configs/config.yml
