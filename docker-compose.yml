@@ -10,7 +10,7 @@ services:
         volumes:
             - ./config.yml:/var/www/html/mibew/configs/config.yml
     db:
-        image: mysql:5
+        image: mariadb:10.7 
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=mibew
