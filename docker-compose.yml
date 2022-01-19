@@ -8,7 +8,7 @@ services:
         networks:
             - net
         volumes:
-            - ./config.yml:/var/www/html/configs/config.yml
+            - ./config.yml:/var/www/html/mibew/configs/config.yml
     db:
         image: mysql:5
         environment:

@@ -1,14 +1,14 @@
-FROM php:7.2-apache
+FROM php:7.4-apache
 
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
+        libonig-dev \
     && docker-php-ext-configure gd \
-        --with-png-dir=/usr/ \
-        --with-jpeg-dir=/usr/ \
-        --with-freetype-dir=/usr/ \
+        --with-jpeg=/usr/ \
+        --with-freetype=/usr/ \
     && docker-php-ext-install gd
 
 # install php required extentions
@@ -25,8 +25,8 @@ RUN docker-php-ext-install \
 # TODO: install node and gulp to build from source
 
 # Enviroment variables
-ENV MIBEW_VERSION 3.3.1
-ENV MIBEW_SHA1 e2c2c191232372439f980b0b1532d19dce54dc99
+ENV MIBEW_VERSION 3.5.4
+ENV MIBEW_SHA1 ebb925df2ebeb31cc8b945f9f57ff7c222863be9 
 
 # change workdir to home
 WORKDIR /~
@@ -38,11 +38,12 @@ RUN curl -o mibew.tar.gz -fSL "https://downloads.sourceforge.net/project/mibew/c
     # check sha1 sum
 	echo "$MIBEW_SHA1 *mibew.tar.gz" | sha1sum -c -&& \
     # Extract files to apache root folder
-	tar -xzf mibew.tar.gz --strip 1 -C /var/www/html/ && \
+	#tar -xzf mibew.tar.gz --strip 1 -C /var/www/html/ && \
+	tar -xzf mibew.tar.gz -C /var/www/html/ && \
     # remove downloaded archive
 	rm mibew.tar.gz && \
     # change permissions
 	chown -R www-data:www-data /var/www/html;
 
 # create a volume for the config file
-VOLUME /var/www/html/configs/config.yml
+VOLUME /var/www/html/mibew/configs/config.yml
