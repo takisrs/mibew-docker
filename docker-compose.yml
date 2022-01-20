@@ -1,23 +1,26 @@
+
 version: "3"
+networks:
+    default:
+      driver: bridge
+      ipam:
+        config:
+        - subnet:  192.168.185.0/24
 
 services:
     web:
         build: .
         ports:
             - 8080:80
-        networks:
-            - net
         volumes:
             - ./config.yml:/var/www/html/mibew/configs/config.yml
+            - ./styles:/styles
     db:
         image: mysql:8 
+        volumes:
+            - ./db_data:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=mibew
             - MYSQL_USER=mibew
             - MYSQL_PASSWORD=mibew
-        networks:
-            - net
-
-networks:
-    net:

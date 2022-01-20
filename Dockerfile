@@ -54,4 +54,4 @@ RUN curl -o mibew.tar.gz -fSL "https://downloads.sourceforge.net/project/mibew/c
         tar -xzf mibew-i18n-de.tar.gz -C /var/www/html/mibew/locales/ ;
 
 # create a volume for the config file
-VOLUME /var/www/html/mibew/configs/config.yml
+VOLUME ["/var/www/html/mibew/styles" ,"/var/www/html/mibew/configs/config.yml"]
