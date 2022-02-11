@@ -9,12 +9,20 @@ networks:
 
 services:
     web:
-        build: .
+        build:
+            context: .
+            args:
+                MIBEW_VERSION: 3.5.4
+                MIBEW_SHA1: ebb925df2ebeb31cc8b945f9f57ff7c222863be9
+                MIBEW_DE_SHA1: 468d86103f4a398cdcda651b2a40687142af5e5d
         ports:
             - 8080:80
         volumes:
-            - ./config.yml:/var/www/html/mibew/configs/config.yml
-            - ./styles:/styles
+            - ./mibew-config/config.yml:/var/www/html/mibew/configs/config.yml
+            - ./mibew-config/styles:/var/www/html/mibew/styles
+            - ./mibew-config/sounds:/var/www/html/mibew/sounds
+            - ./mibew-config/plugins:/var/www/html/mibew/plugins
+            - ./mibew-config/locales:/var/www/html/mibew/locales
     db:
         image: mysql:8 
         volumes:
