@@ -23,6 +23,9 @@ services:
             - ./mibew-config/sounds:/var/www/html/mibew/sounds
             - ./mibew-config/plugins:/var/www/html/mibew/plugins
             - ./mibew-config/locales:/var/www/html/mibew/locales
+    cron:
+        build:
+            context: cron/
     db:
         image: mysql:8 
         volumes:

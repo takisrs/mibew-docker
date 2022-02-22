@@ -17,11 +17,6 @@ RUN docker-php-ext-install \
     gettext \
     mbstring
   
-# install other dependencies
-RUN apt-get install -y \
-    cron \
-    mariadb-client
-
 # Enviroment variables
 ARG MIBEW_VERSION=3.5.4
 ARG MIBEW_SHA1=ebb925df2ebeb31cc8b945f9f57ff7c222863be9
