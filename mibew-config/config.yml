@@ -14,7 +14,7 @@ database:
 
 # Mail
 ## This value will be used as sender address in all e-mails Mibew Messenger send.
-mailbox: mibew@yourdomain.com
+mailbox: mibew-no-reply@bibliothek.kit.edu
 
 ## Mailer parameters
 mailer:
@@ -26,14 +26,14 @@ mailer:
     #
     # To use SMTP-based solution set this option "smtp". This approach require
     # some extra configuration to be done (see below).
-    transport: mail
+    transport: smtp
 
     # The lines below represents default SMTP mailer configurations. They will
     # be used only if the "transport" option is set to "smtp".
-    host: localhost
+    host: smarthost.kit.edu
     port: 25
-    user: user
-    pass: ""
+    #user: user
+    #pass: ""
     # The following option determines what kind of encryption should be used.
     # false means no encyption at all. Another values once can use are "ssl" and
     # "tls".
@@ -54,6 +54,7 @@ cache:
     # If "memcached" is used the cached data will be stored in Memcached
     # storage. Before using this kind of storage make sure PHP's memcached
     # extension is installed and enabled.
+    #storage: file_system
     storage: file_system
 
     # The lines below represents default Memcached server configurations. They
