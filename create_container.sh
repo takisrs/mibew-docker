@@ -3,9 +3,9 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 echo $SCRIPT_DIR
 
-export MIBEW_VERSION=3.5.4
-export MIBEW_SHA1=ebb925df2ebeb31cc8b945f9f57ff7c222863be9
-export MIBEW_DE_SHA1=468d86103f4a398cdcda651b2a40687142af5e5d
+export MIBEW_VERSION=3.5.7
+export MIBEW_SHA1=b511aed34e22ed97752e0185997cee79daacd4f7
+export MIBEW_DE_SHA1=5f9c6053560b72a3f06d626a6bd83af9a2cce37e
 
 tmpdir=$(mktemp -d)
 echo $tmpdir
