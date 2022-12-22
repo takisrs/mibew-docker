@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.1-apache
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -19,7 +19,7 @@ RUN docker-php-ext-install \
   
 # Enviroment variables
 ARG MIBEW_VERSION=3.5.7
-ARG MIBEW_SHA1=48393d8fb15aa176d1216aef2a2a6b5797488fdc2269cf10d07cd11e38d09718
+ARG MIBEW_SHA1=b511aed34e22ed97752e0185997cee79daacd4f7
 ARG MIBEW_DE_SHA1=5f9c6053560b72a3f06d626a6bd83af9a2cce37e
 
 # change workdir to home
