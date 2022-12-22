@@ -28,7 +28,17 @@ Alternatively, you may clone this repository and run the following command to cr
 ```bash
 docker-compose up
 ```
+*Please note:* You must pre-seed the folders in mibew-config; or remove the volumes altogether (except for config.yaml; keep this file).
+
+It is even simpler to use the provided script to create the containers:
+```bash
+./create_container.sh
+```
+This script pre-seeds the respective folders (styles, sounds, etc.) and thus (hopefully ;-) ) avoids errors during access of index.php / install.php.
 
 ## Run Setup
+After the containers have been cearted and started, one may access mibew at:
 
-Go to: http://localhost:8080/mibew/install.php
+Installation / Setup: http://localhost:8080/mibew/install.php
+
+Index: http://localhost:8080/mibew/index.php
